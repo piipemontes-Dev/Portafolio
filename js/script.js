@@ -6,12 +6,120 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Fix Services Portfolio - Script cargado correctamente');
     
-    // Inicializar todas las funcionalidades
-    initNavigation();
-    initContactForm();
-    initScrollEffects();
-    initAnimations();
+    // Inicializar pantalla de carga primero
+    initLoadingScreen();
+    
+    // Inicializar todas las funcionalidades después de la carga
+    setTimeout(() => {
+        initNavigation();
+        initContactForm();
+        initScrollEffects();
+        initAnimations();
+    }, 3000); // Esperar 3 segundos antes de inicializar el resto
 });
+
+// ============================================
+// PANTALLA DE CARGA INICIAL
+// ============================================
+
+function initLoadingScreen() {
+    console.log('Iniciando pantalla de carga...');
+    
+    // Obtener elementos de la pantalla de carga
+    const loadingScreen = document.getElementById('loading-screen');
+    const mainContent = document.getElementById('main-content');
+    
+    if (!loadingScreen || !mainContent) {
+        console.error('Elementos de carga no encontrados');
+        return;
+    }
+    
+    // Mostrar el contenido principal después de 3 segundos
+    setTimeout(() => {
+        console.log('Ocultando pantalla de carga...');
+        
+        // Agregar clase de fade-out a la pantalla de carga
+        loadingScreen.classList.add('fade-out');
+        
+        // Mostrar el contenido principal
+        mainContent.classList.remove('hidden');
+        mainContent.classList.add('show');
+        
+        // Remover la pantalla de carga del DOM después de la transición
+        setTimeout(() => {
+            loadingScreen.style.display = 'none';
+            console.log('Pantalla de carga removida');
+        }, 800); // Esperar a que termine la transición CSS (0.8s)
+        
+    }, 3000); // 3 segundos de duración
+    
+    // Efecto de typing en el título de carga
+    const loadingTitle = document.querySelector('.loading-title');
+    if (loadingTitle) {
+        const originalText = loadingTitle.textContent;
+        loadingTitle.textContent = '';
+        
+        let i = 0;
+        const typeWriter = () => {
+            if (i < originalText.length) {
+                loadingTitle.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 150); // Velocidad de escritura
+            }
+        };
+        
+        // Iniciar efecto de typing después de un pequeño delay
+        setTimeout(typeWriter, 500);
+    }
+    
+    // Efecto de progreso visual (opcional)
+    createProgressBar();
+}
+
+// Función para crear una barra de progreso visual
+function createProgressBar() {
+    const loadingContainer = document.querySelector('.loading-container');
+    if (!loadingContainer) return;
+    
+    // Crear barra de progreso
+    const progressBar = document.createElement('div');
+    progressBar.className = 'progress-bar';
+    progressBar.innerHTML = `
+        <div class="progress-fill"></div>
+    `;
+    
+    // Agregar estilos
+    progressBar.style.cssText = `
+        width: 200px;
+        height: 4px;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 2px;
+        margin: 20px auto 0;
+        overflow: hidden;
+    `;
+    
+    const progressFill = progressBar.querySelector('.progress-fill');
+    progressFill.style.cssText = `
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent-color), #fff);
+        width: 0%;
+        transition: width 0.1s ease;
+        border-radius: 2px;
+    `;
+    
+    loadingContainer.appendChild(progressBar);
+    
+    // Animar la barra de progreso
+    let progress = 0;
+    const progressInterval = setInterval(() => {
+        progress += 1;
+        progressFill.style.width = progress + '%';
+        
+        if (progress >= 100) {
+            clearInterval(progressInterval);
+        }
+    }, 30); // 3 segundos / 100 = 30ms por incremento
+}
 
 // ============================================
 // NAVEGACIÓN MÓVIL

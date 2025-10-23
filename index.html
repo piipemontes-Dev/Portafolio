@@ -16,6 +16,26 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <!-- Pantalla de carga inicial -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-container">
+            <div class="loading-logo">
+                <h1 class="loading-title">Fix Services</h1>
+                <div class="loading-subtitle">Soluciones Tecnológicas</div>
+            </div>
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+            </div>
+            <div class="loading-dots">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido principal (oculto inicialmente) -->
+    <div id="main-content" class="main-content hidden">
     <!-- Navegación principal del sitio -->
     <nav class="navbar">
         <div class="nav-container">
@@ -233,6 +253,54 @@
                         <p class="project-description">Asistencia técnica completa para empresa</p>
                     </div>
                 </div>
+                
+                <!-- Proyecto 7 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://res.cloudinary.com/dukxt2wlk/image/upload/v1761183969/WhatsApp_Image_2025-10-22_at_8.43.57_PM_qnzd0t.jpg" 
+                             alt="Instalación de equipos">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Instalación de equipos de cómputo</h3>
+                        <p class="project-description">Configuración y montaje de equipos para oficina</p>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 8 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://res.cloudinary.com/dukxt2wlk/image/upload/v1761183966/WhatsApp_Image_2025-10-22_at_8.43.56_PM_tfddje.jpg" 
+                             alt="Mantenimiento de servidores">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Mantenimiento de servidores</h3>
+                        <p class="project-description">Optimización y mantenimiento de infraestructura de servidores</p>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 9 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://res.cloudinary.com/dukxt2wlk/image/upload/v1761183965/WhatsApp_Image_2025-10-22_at_8.43.55_PM_cmorg1.jpg" 
+                             alt="Configuración de red avanzada">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Configuración de red avanzada</h3>
+                        <p class="project-description">Implementación de soluciones de red empresarial</p>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 10 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://res.cloudinary.com/dukxt2wlk/image/upload/v1761183964/WhatsApp_Image_2025-10-22_at_8.43.52_PM_kcv8ic.jpg" 
+                             alt="Sistema de monitoreo">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Sistema de monitoreo</h3>
+                        <p class="project-description">Implementación de sistema de monitoreo y control</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -379,6 +447,8 @@
             </div>
         </div>
     </footer>
+
+    </div> <!-- Cierre del main-content -->
 
     <!-- Enlace al archivo JavaScript -->
     <script src="js/script.js"></script>
