@@ -61,6 +61,11 @@
                 <li class="nav-item">
                     <a href="#contacto" class="nav-link">Contacto</a>
                 </li>
+                <li class="nav-item nav-whatsapp">
+                    <a href="https://wa.me/573012885400" target="_blank" rel="noopener noreferrer" class="nav-link nav-whatsapp-btn" title="Contacta por WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </li>
             </ul>
             
             <!-- Botón del menú móvil -->
@@ -350,7 +355,7 @@
             <div class="contact-content">
                 <!-- Formulario de contacto -->
                 <div class="contact-form-container">
-                    <form id="contactForm" class="contact-form">
+                    <form id="contactForm" class="contact-form" action="https://formspree.io/f/xwpwvyrp" method="POST">
                         <div class="form-group">
                             <label for="nombre">Nombre completo</label>
                             <input type="text" id="nombre" name="nombre" required>
@@ -394,19 +399,19 @@
                 <div class="contact-info">
                     <h3>Información de contacto</h3>
                     
-                    <div class="contact-item">
+                    <a href="https://wa.me/573012885400" target="_blank" rel="noopener noreferrer" class="contact-item whatsapp-contact-link" style="text-decoration: none; color: inherit;">
                         <i class="fab fa-whatsapp"></i>
                         <div>
                             <strong>WhatsApp</strong>
                             <p>+57 301 2885 400</p>
                         </div>
-                    </div>
+                    </a>
                     
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
                         <div>
                             <strong>Correo electrónico</strong>
-                            <p>Piipemontes@gmail.com</p>
+                            <p><a href="mailto:Piipemontes@gmail.com">Piipemontes@gmail.com</a></p>
                         </div>
                     </div>
                     
@@ -422,14 +427,11 @@
                     <div class="social-links">
                         <h4>Redes sociales</h4>
                         <div class="social-buttons">
-                            <a href="#" class="social-button" title="Instagram">
+                            <a href="https://www.instagram.com/fixservicescuc/" target="_blank" rel="noopener noreferrer" class="social-button" title="Instagram">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="#" class="social-button" title="Facebook">
-                                <i class="fab fa-facebook"></i>
-                            </a>
-                            <a href="#" class="social-button" title="LinkedIn">
-                                <i class="fab fa-linkedin"></i>
+                            <a href="https://wa.me/573012885400" target="_blank" rel="noopener noreferrer" class="social-button social-button-whatsapp" title="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
                             </a>
                         </div>
                     </div>
@@ -452,5 +454,10 @@
 
     <!-- Enlace al archivo JavaScript -->
     <script src="js/script.js"></script>
+    
+    <!-- Chatbase Chatbot -->
+    <script>
+    (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="DuDluT7LcW__wkMJLNAY9";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+    </script>
 </body>
 </html>

@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         initContactForm();
         initScrollEffects();
         initAnimations();
-    }, 3000); // Esperar 3 segundos antes de inicializar el resto
+    }, 1600); // Esperar 1.6 segundos antes de inicializar el resto
 });
 
 // ============================================
@@ -34,7 +34,7 @@ function initLoadingScreen() {
         return;
     }
     
-    // Mostrar el contenido principal después de 3 segundos
+    // Mostrar el contenido principal después de 1.6 segundos
     setTimeout(() => {
         console.log('Ocultando pantalla de carga...');
         
@@ -51,7 +51,7 @@ function initLoadingScreen() {
             console.log('Pantalla de carga removida');
         }, 800); // Esperar a que termine la transición CSS (0.8s)
         
-    }, 3000); // 3 segundos de duración
+    }, 1600); // 1.6 segundos de duración
     
     // Efecto de typing en el título de carga
     const loadingTitle = document.querySelector('.loading-title');
@@ -118,7 +118,7 @@ function createProgressBar() {
         if (progress >= 100) {
             clearInterval(progressInterval);
         }
-    }, 30); // 3 segundos / 100 = 30ms por incremento
+    }, 16); // 1.6 segundos / 100 = 16ms por incremento
 }
 
 // ============================================
@@ -161,17 +161,23 @@ function initNavigation() {
     // Navegación suave entre secciones
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
+            const href = link.getAttribute('href');
             
-            if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 70; // Ajustar por la altura del navbar
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
+            // Solo aplicar smooth scroll a enlaces internos (que empiezan con #)
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const targetId = href;
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    const offsetTop = targetSection.offsetTop - 70; // Ajustar por la altura del navbar
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
             }
+            // Si no es un enlace interno, dejar que funcione normalmente
         });
     });
 }
@@ -183,35 +189,51 @@ function initNavigation() {
 function initContactForm() {
     // Obtener el formulario de contacto
     const contactForm = document.getElementById('contactForm');
-    
+
     if (contactForm) {
         // Event listener para el envío del formulario
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault(); // Prevenir el envío por defecto
-            
+
             // Obtener los datos del formulario
             const formData = new FormData(contactForm);
             const formObject = {};
-            
+
             // Convertir FormData a objeto
             formData.forEach((value, key) => {
                 formObject[key] = value;
             });
-            
+
             // Validar el formulario
             if (validateForm(formObject)) {
-                // Mostrar mensaje de éxito
-                showSuccessMessage();
-                
-                // Mostrar datos en consola (requerimiento específico)
-                console.log('Formulario enviado correctamente');
-                console.log('Datos del formulario:', formObject);
-                
-                // Limpiar el formulario
-                contactForm.reset();
-                
-                // Simular envío (aquí se podría integrar con un servicio real)
-                simulateFormSubmission(formObject);
+                // Enviar datos a Formspree
+                fetch('https://formspree.io/f/xwpwvyrp', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.ok || !data.error) {
+                        // Mostrar mensaje de éxito
+                        showSuccessMessage();
+
+                        // Mostrar datos en consola
+                        console.log('Formulario enviado correctamente a Formspree');
+                        console.log('Datos del formulario:', formObject);
+
+                        // Limpiar el formulario
+                        contactForm.reset();
+                    } else {
+                        showErrorMessage(['Error al enviar el mensaje. Inténtalo de nuevo.']);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al enviar formulario:', error);
+                    showErrorMessage(['Error de conexión. Inténtalo de nuevo.']);
+                });
             }
         });
     }

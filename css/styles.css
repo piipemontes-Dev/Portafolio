@@ -236,7 +236,8 @@ body {
     top: 0;
     width: 100%;
     background-color: var(--primary-color);
-    box-shadow: var(--shadow-light);
+    /* Diseño flat: sombra mínima */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
     z-index: 1000;
     transition: var(--transition-fast);
 }
@@ -253,7 +254,7 @@ body {
 
 .nav-logo h2 {
     color: var(--white);
-    font-size: var(--font-xl);
+    font-size: 1.8rem;
     font-weight: 700;
 }
 
@@ -267,13 +268,14 @@ body {
     color: var(--white);
     text-decoration: none;
     font-weight: 500;
+    font-size: 1.3rem;
     transition: var(--transition-fast);
     position: relative;
 }
 
 .nav-link:hover {
     color: var(--accent-color);
-    transform: translateY(-2px);
+    /* Diseño flat: sin transformación */
 }
 
 /* Efecto de línea debajo del enlace al hacer hover */
@@ -290,6 +292,35 @@ body {
 
 .nav-link:hover::after {
     width: 100%;
+}
+
+/* Botón de WhatsApp en el navbar */
+.nav-whatsapp-btn {
+    background-color: #25d366;
+    color: var(--white) !important;
+    padding: 8px 12px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-fast);
+    border: 2px solid transparent;
+}
+
+.nav-whatsapp-btn::after {
+    display: none; /* Remover el efecto de línea */
+}
+
+.nav-whatsapp-btn:hover {
+    /* Diseño flat: solo cambio de color */
+    background-color: #128c7e;
+    color: var(--white) !important;
+}
+
+.nav-whatsapp-btn i {
+    font-size: 1.8rem;
 }
 
 /* Menú hamburguesa para móviles */
@@ -375,14 +406,14 @@ body {
     font-weight: 600;
     font-size: var(--font-large);
     transition: var(--transition-fast);
-    box-shadow: var(--shadow-medium);
+    /* Diseño flat: sombra mínima */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-top: var(--spacing-md);
 }
 
 .cta-button:hover {
+    /* Diseño flat: solo cambio de color */
     background-color: #e6731a;
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-heavy);
 }
 
 .hero-image {
@@ -396,12 +427,14 @@ body {
     max-width: 400px;
     height: auto;
     border-radius: 20px;
-    box-shadow: var(--shadow-heavy);
+    /* Diseño flat: sombra mínima */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
     transition: var(--transition-medium);
 }
 
 .profile-img:hover {
-    transform: scale(1.05);
+    /* Diseño flat: sin zoom */
+    opacity: 0.9;
 }
 
 /* ============================================
@@ -454,7 +487,8 @@ body {
     background-color: var(--white);
     padding: var(--spacing-md);
     border-radius: 15px;
-    box-shadow: var(--shadow-light);
+    /* Diseño flat: sombra mínima */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
     text-align: center;
     transition: var(--transition-fast);
     border: 2px solid transparent;
@@ -465,9 +499,9 @@ body {
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-heavy);
+    /* Diseño flat: sin transformación, solo cambio de borde */
     border-color: var(--accent-color);
+    background-color: #fafafa;
 }
 
 .service-icon {
@@ -510,13 +544,15 @@ body {
     background-color: var(--white);
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: var(--shadow-light);
+    /* Diseño flat: sombra mínima */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
     transition: var(--transition-fast);
+    border: 2px solid transparent;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-heavy);
+    /* Diseño flat: solo borde */
+    border: 2px solid var(--accent-color);
 }
 
 .project-image {
@@ -532,9 +568,7 @@ body {
     transition: var(--transition-medium);
 }
 
-.project-card:hover .project-image img {
-    transform: scale(1.1);
-}
+/* Diseño flat: sin zoom en imagen */
 
 .project-content {
     padding: var(--spacing-md);
@@ -590,7 +624,8 @@ body {
     max-width: 400px;
     height: auto;
     border-radius: 20px;
-    box-shadow: var(--shadow-medium);
+    /* Diseño flat: sombra mínima */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 /* ============================================
@@ -613,7 +648,8 @@ body {
     background-color: var(--white);
     padding: var(--spacing-xl);
     border-radius: 15px;
-    box-shadow: var(--shadow-light);
+    /* Diseño flat: sombra mínima */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .contact-form {
@@ -649,7 +685,7 @@ body {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(255, 130, 37, 0.1);
+    /* Diseño flat: sin box-shadow */
 }
 
 .submit-button {
@@ -670,9 +706,8 @@ body {
 }
 
 .submit-button:hover {
+    /* Diseño flat: solo cambio de color */
     background-color: #e6731a;
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-medium);
 }
 
 /* Información de contacto */
@@ -680,7 +715,8 @@ body {
     background-color: var(--white);
     padding: var(--spacing-xl);
     border-radius: 15px;
-    box-shadow: var(--shadow-light);
+    /* Diseño flat: sombra mínima */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .contact-info h3 {
@@ -701,8 +737,30 @@ body {
 }
 
 .contact-item:hover {
+    /* Diseño flat: solo cambio de color de fondo */
     background-color: #e8e8e8;
-    transform: translateX(5px);
+}
+
+/* Estilos específicos para el enlace de WhatsApp en contacto */
+.whatsapp-contact-link {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.whatsapp-contact-link:hover {
+    /* Diseño flat: solo cambio de color */
+    background-color: #25d366 !important;
+}
+
+.whatsapp-contact-link:hover i {
+    /* Diseño flat: sin animación */
+    color: white;
+}
+
+.whatsapp-contact-link:hover strong,
+.whatsapp-contact-link:hover p {
+    color: white;
 }
 
 .contact-item i {
@@ -738,26 +796,34 @@ body {
 .social-buttons {
     display: flex;
     gap: var(--spacing-sm);
+    justify-content: center;
 }
 
 .social-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     background-color: var(--accent-color);
     color: var(--white);
     border-radius: 50%;
     text-decoration: none;
     transition: var(--transition-fast);
-    font-size: 1.2rem;
+    font-size: 1.8rem;
 }
 
 .social-button:hover {
+    /* Diseño flat: solo cambio de color */
     background-color: #e6731a;
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-medium);
+}
+
+.social-button-whatsapp {
+    background-color: var(--accent-color);
+}
+
+.social-button-whatsapp:hover {
+    background-color: #e6731a;
 }
 
 /* ============================================
